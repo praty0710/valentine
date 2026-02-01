@@ -2,96 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Chinki 🌙💖</title>
+<title>For Chinki 🌙</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- GOOGLE FONT (VERY CLEAR & ROMANTIC) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
-    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #1b2a4e, #0b1023);
     overflow: hidden;
-    background: radial-gradient(circle at top, #1b1f3b, #0b0f2a);
     color: #ffffff;
   }
 
-  /* Moon */
-  .moon {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 80px;
-    height: 80px;
-    background: #f5f3ce;
-    border-radius: 50%;
-    box-shadow: 0 0 45px rgba(245,243,206,0.7);
-    z-index: 1;
-  }
-
-  /* Stars */
+  /* STARS */
   .star {
     position: absolute;
     background: white;
     border-radius: 50%;
     opacity: 0.8;
-    animation: twinkle 2s infinite alternate;
+    animation: twinkle 4s infinite ease-in-out;
   }
 
   @keyframes twinkle {
-    from { opacity: 0.3; }
-    to { opacity: 1; }
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 1; }
   }
 
   .slide {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top: 0;
     left: 100%;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: left 0.9s ease;
-    z-index: 2;
+    transition: left 0.8s ease;
+    padding: 20px;
   }
 
   .slide.active { left: 0; }
   .slide.prev { left: -100%; }
 
   .card {
-    background: rgba(20, 24, 60, 0.85);
-    backdrop-filter: blur(12px);
-    width: 360px;
-    padding: 36px;
-    border-radius: 28px;
+    background: rgba(15, 25, 60, 0.85);
+    border-radius: 30px;
+    padding: 40px 30px;
+    max-width: 420px;
+    width: 100%;
     text-align: center;
-    box-shadow: 0 35px 70px rgba(0,0,0,0.6);
+    box-shadow: 0 0 60px rgba(255, 182, 193, 0.25);
+    backdrop-filter: blur(8px);
   }
 
   h1 {
-    color: #ffb3c6;
-    min-height: 48px;
     font-weight: 600;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ffb6c1;
   }
 
   p {
     font-size: 18px;
     line-height: 1.7;
+    font-weight: 300;
+    color: #f1f1f1;
     min-height: 90px;
-    color: #ffffff;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
   }
 
   button {
-    padding: 14px 28px;
+    margin-top: 25px;
+    padding: 14px 30px;
+    border-radius: 30px;
     border: none;
-    border-radius: 22px;
-    background: #ff4d6d;
+    background: linear-gradient(135deg,#ff7aa2,#ff4d6d);
     color: white;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 15px;
-    box-shadow: 0 8px 20px rgba(255,77,109,0.5);
   }
 
   button:hover {
@@ -103,174 +97,121 @@
     position: absolute;
   }
 
-  .heart {
-    position: absolute;
-    bottom: -30px;
-    font-size: 20px;
-    animation: float 7s linear infinite;
+  .hint {
+    font-size: 14px;
     opacity: 0.7;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0); opacity: 0.8; }
-    100% { transform: translateY(-120vh); opacity: 0; }
-  }
-
-  .final {
-    font-size: 20px;
-    margin-top: 10px;
-    font-weight: 500;
+    margin-top: 15px;
   }
 </style>
 </head>
 
 <body>
 
-<div class="moon"></div>
-
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_2c7b6c1c63.mp3" type="audio/mpeg">
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_9f65c6c0d0.mp3" type="audio/mpeg">
 </audio>
 
 <!-- SLIDE 1 -->
 <div class="slide active">
   <div class="card">
-    <h1 id="t1"></h1>
-    <p id="p1"></p>
-    <button onclick="nextSlide(); startMusic();">Okay 🌙</button>
+    <h1>Hey Chinki 🌙</h1>
+    <p class="type"></p>
+    <button onclick="nextSlide()">Hi… 💫</button>
   </div>
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide">
   <div class="card">
-    <h1 id="t2"></h1>
-    <p id="p2"></p>
-    <button onclick="nextSlide()">Go on 💫</button>
+    <h1>Just something honest 💭</h1>
+    <p class="type"></p>
+    <button onclick="nextSlide()">Tell me 💖</button>
   </div>
 </div>
 
 <!-- SLIDE 3 -->
 <div class="slide">
   <div class="card">
-    <h1 id="t3"></h1>
-    <p id="p3"></p>
-    <button onclick="nextSlide()">Yes 💖</button>
-    <button id="no">No 🙄</button>
+    <h1>So here it is… 💗</h1>
+    <p class="type"></p>
+    <button onclick="nextSlide()">Yes 💕</button>
+    <button id="no">No 🙃</button>
   </div>
 </div>
 
 <!-- SLIDE 4 -->
 <div class="slide">
   <div class="card">
-    <h1 id="t4"></h1>
-    <p id="p4"></p>
-    <button onclick="nextSlide()">One last thing 🌌</button>
+    <h1>You made me smile 🥰</h1>
+    <p class="type"></p>
+    <div class="hint">📸 Screenshot this & send it to me</div>
   </div>
 </div>
 
 <!-- SLIDE 5 -->
 <div class="slide">
   <div class="card">
-    <h1>Before you go…</h1>
-    <p class="final">
-      If this made you smile even a little…<br><br>
-      <b>Send me a ❤️</b>
-    </p>
-    <p style="font-size:14px; opacity:0.85;">
-      Screenshot this if you want to remember it 🌙
-    </p>
+    <h1>One last thing 💌</h1>
+    <p class="type"></p>
   </div>
 </div>
 
 <script>
-/* MUSIC */
-function startMusic() {
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.4;
-  music.play();
-}
-
 /* SLIDES */
 let current = 0;
 const slides = document.querySelectorAll(".slide");
+
 function nextSlide() {
   slides[current].classList.remove("active");
   slides[current].classList.add("prev");
   current++;
   slides[current].classList.add("active");
+  typeText();
 }
 
 /* TYPEWRITER */
-function typeText(el, text, speed = 40) {
-  el.innerHTML = "";
-  let i = 0;
+const texts = [
+  "I don’t know when it happened… but talking to you started feeling special.",
+  "You have this calm, cute energy that stays even after the chat ends.",
+  "So… will you be my Valentine, Chinki?",
+  "Honestly, that made my day. Maybe even my week.",
+  "Send me a ❤️ if you smiled reading this."
+];
+
+let typingIndex = 0;
+let charIndex = 0;
+
+function typeText() {
+  const p = slides[current].querySelector(".type");
+  p.innerHTML = "";
+  charIndex = 0;
+  const text = texts[current];
+
   const interval = setInterval(() => {
-    el.innerHTML += text.charAt(i);
-    i++;
-    if (i >= text.length) clearInterval(interval);
-  }, speed);
+    p.innerHTML += text.charAt(charIndex);
+    charIndex++;
+    if (charIndex >= text.length) clearInterval(interval);
+  }, 45);
 }
 
-/* TEXT */
-typeText(t1, "Hey Chinki 🌙");
-typeText(p1, "I don’t know where you are right now…\nbut I hope this moment feels calm, warm, and a little special.", 35);
+typeText();
 
-setTimeout(() => {
-  typeText(t2, "There’s something about you 💫");
-  typeText(p2, "The way you make things lighter.\nThe way conversations feel easier.\nThe way you quietly matter.", 35);
-}, 1200);
-
-setTimeout(() => {
-  typeText(t3, "So here it is 💖");
-  typeText(p3, "Will you be my Valentine?", 45);
-}, 2400);
-
-setTimeout(() => {
-  typeText(t4, "You chose YES 🥰");
-  typeText(
-    p4,
-    "And honestly…\nthat makes me smile more than you know.\n\nHappy Valentine’s Day, Chinki 🌹\n\nI’m really glad it’s you.",
-    35
-  );
-}, 3600);
-
-/* NO BUTTON */
+/* NO BUTTON ESCAPE */
 const noBtn = document.getElementById("no");
-const noTexts = [
-  "Nice try 😌",
-  "Moon says no 🌙",
-  "Be serious",
-  "That’s illegal",
-  "You’re smiling, aren’t you? 💕"
-];
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 120);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-  noBtn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+  noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
 });
 
-/* HEARTS */
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerText = "💖";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.fontSize = Math.random() * 18 + 14 + "px";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 7000);
-}, 500);
-
 /* STARS */
-for (let i = 0; i < 80; i++) {
+for (let i = 0; i < 70; i++) {
   const star = document.createElement("div");
   star.className = "star";
-  star.style.width = star.style.height = Math.random() * 2 + 1 + "px";
-  star.style.top = Math.random() * 100 + "vh";
+  star.style.width = star.style.height = Math.random() * 3 + 1 + "px";
   star.style.left = Math.random() * 100 + "vw";
-  star.style.animationDuration = Math.random() * 2 + 1 + "s";
+  star.style.top = Math.random() * 100 + "vh";
+  star.style.animationDuration = Math.random() * 3 + 2 + "s";
   document.body.appendChild(star);
 }
 </script>
