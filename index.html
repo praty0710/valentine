@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nandini 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Comic Sans MS', cursive;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      width: 360px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      min-height: 40px;
+    }
+
+    p {
+      font-size: 18px;
+      min-height: 60px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: white;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0.8; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1 id="title"></h1>
+  <p id="text"></p>
+
+  <button id="yesBtn">Yes 💖</button>
+  <button id="noBtn">No 🙄</button>
+</div>
+
+<script>
+  const title = document.getElementById("title");
+  const text = document.getElementById("text");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+
+  const introLines = [
+    "Hey Nandini 💕",
+    "Okay so listen…",
+    "This is VERY important 😌",
+    "Will you be my Valentine? 🌹"
+  ];
+
+  let index = 0;
+  function typeLine() {
+    if (index < introLines.length) {
+      title.innerText = introLines[index];
+      index++;
+      setTimeout(typeLine, 1200);
+    }
+  }
+  typeLine();
+
+  const noTexts = [
+    "Nope 😜",
+    "Nice try",
+    "You’re kidding right?",
+    "Still no?",
+    "Why are you like this 😭"
+  ];
+
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 120);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
+  });
+
+  yesBtn.addEventListener("click", () => {
+    title.innerText = "YAYYYY 🥰💘";
+    text.innerHTML = `
+      I knew it 😌<br><br>
+      You’ve officially signed up for:
+      <br>🍫 Chocolates
+      <br>☕ Long random talks
+      <br>😂 Laughing at my dumb jokes
+      <br>💖 And me genuinely caring about you
+      <br><br>
+      Happy Valentine’s Day, Nandini 🌹
+      <br><br>
+      <b>Now tell me… when’s our date? 😏</b>
+    `;
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    startConfetti();
+  });
+
+  /* Hearts animation */
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 400);
+
+  /* Confetti */
+  function startConfetti() {
+    for (let i = 0; i < 40; i++) {
+      const conf = document.createElement("div");
+      conf.innerText = "🎉";
+      conf.style.position = "absolute";
+      conf.style.left = Math.random() * 100 + "vw";
+      conf.style.top = "-10px";
+      conf.style.fontSize = "22px";
+      conf.style.animation = "floatUp 3s linear";
+      document.body.appendChild(conf);
+      setTimeout(() => conf.remove(), 3000);
+    }
+  }
+</script>
+
+</body>
+</html>
