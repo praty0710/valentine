@@ -1,173 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nandini 💖</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Comic Sans MS', cursive;
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<title>Nandini 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 22px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      width: 360px;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #ffd6e8, #ff9a9e);
+    font-family: 'Segoe UI', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    h1 {
-      color: #ff4d6d;
-      min-height: 40px;
-    }
+  .container {
+    background: white;
+    width: 360px;
+    padding: 32px;
+    border-radius: 28px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s ease;
+  }
 
-    p {
-      font-size: 18px;
-      min-height: 60px;
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
 
-    button {
-      padding: 12px 22px;
-      font-size: 16px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      margin: 10px;
-    }
+  h1 {
+    color: #ff4d6d;
+    min-height: 48px;
+  }
 
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-    }
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    min-height: 90px;
+  }
 
-    #noBtn {
-      background: #adb5bd;
-      color: white;
-      position: absolute;
-    }
+  button {
+    padding: 14px 26px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    margin: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
 
-    .hidden {
-      display: none;
-    }
+  button:hover {
+    transform: scale(1.05);
+  }
 
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-    }
+  #yes {
+    background: #ff4d6d;
+    color: white;
+  }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 0.8; }
-      100% { transform: translateY(-120vh); opacity: 0; }
-    }
-  </style>
+  #no {
+    background: #adb5bd;
+    color: white;
+    position: absolute;
+  }
+
+  .heart {
+    position: absolute;
+    bottom: -30px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+  }
+</style>
 </head>
+
 <body>
 
-<div class="card">
+<div class="container">
   <h1 id="title"></h1>
   <p id="text"></p>
 
-  <button id="yesBtn">Yes 💖</button>
-  <button id="noBtn">No 🙄</button>
+  <button id="yes">Yes 💖</button>
+  <button id="no">No 🙄</button>
 </div>
 
 <script>
-  const title = document.getElementById("title");
-  const text = document.getElementById("text");
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
+const title = document.getElementById("title");
+const text = document.getElementById("text");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 
-  const introLines = [
-    "Hey Nandini 💕",
-    "Okay so listen…",
-    "This is VERY important 😌",
-    "Will you be my Valentine? 🌹"
-  ];
+const intro = [
+  "Hey Nandini 🌸",
+  "I hope you’re smiling right now",
+  "Because this is just for you",
+  "So… one honest question 💭",
+  "Will you be my Valentine? 💖"
+];
 
-  let index = 0;
-  function typeLine() {
-    if (index < introLines.length) {
-      title.innerText = introLines[index];
-      index++;
-      setTimeout(typeLine, 1200);
-    }
+let i = 0;
+function typeIntro() {
+  if (i < intro.length) {
+    title.innerText = intro[i];
+    i++;
+    setTimeout(typeIntro, 1200);
   }
-  typeLine();
+}
+typeIntro();
 
-  const noTexts = [
-    "Nope 😜",
-    "Nice try",
-    "You’re kidding right?",
-    "Still no?",
-    "Why are you like this 😭"
-  ];
+const noLines = [
+  "Nice try 😌",
+  "That’s illegal",
+  "Your mouse is broken",
+  "Come on now",
+  "You know the answer 💕"
+];
 
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-    noBtn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
-  });
+no.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+  no.innerText = noLines[Math.floor(Math.random() * noLines.length)];
+});
 
-  yesBtn.addEventListener("click", () => {
-    title.innerText = "YAYYYY 🥰💘";
-    text.innerHTML = `
-      I knew it 😌<br><br>
-      You’ve officially signed up for:
-      <br>🍫 Chocolates
-      <br>☕ Long random talks
-      <br>😂 Laughing at my dumb jokes
-      <br>💖 And me genuinely caring about you
-      <br><br>
-      Happy Valentine’s Day, Nandini 🌹
-      <br><br>
-      <b>Now tell me… when’s our date? 😏</b>
-    `;
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-    startConfetti();
-  });
+yes.addEventListener("click", () => {
+  title.innerText = "You chose YES 🥰";
+  text.innerHTML = `
+    And honestly…<br><br>
+    That means more than you know 💗<br><br>
+    You’ve just signed up for:
+    <br>✨ Someone who listens
+    <br>😂 Laughs with you
+    <br>☕ Random long talks
+    <br>💖 And genuinely cares
+    <br><br>
+    Happy Valentine’s Day, Nandini 🌹
+    <br><br>
+    <b>I’m really glad it’s you.</b>
+  `;
+  yes.style.display = "none";
+  no.style.display = "none";
+  confetti();
+});
 
-  /* Hearts animation */
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }, 400);
-
-  /* Confetti */
-  function startConfetti() {
-    for (let i = 0; i < 40; i++) {
-      const conf = document.createElement("div");
-      conf.innerText = "🎉";
-      conf.style.position = "absolute";
-      conf.style.left = Math.random() * 100 + "vw";
-      conf.style.top = "-10px";
-      conf.style.fontSize = "22px";
-      conf.style.animation = "floatUp 3s linear";
-      document.body.appendChild(conf);
-      setTimeout(() => conf.remove(), 3000);
-    }
+function confetti() {
+  for (let i = 0; i < 50; i++) {
+    const c = document.createElement("div");
+    c.innerText = ["💖","✨","🎉","🌸"][Math.floor(Math.random()*4)];
+    c.style.position = "absolute";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.top = "-20px";
+    c.style.fontSize = "22px";
+    c.style.animation = "float 3s linear";
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
   }
+}
+
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "💖";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = Math.random() * 18 + 14 + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 450);
 </script>
 
 </body>
